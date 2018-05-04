@@ -1,9 +1,5 @@
 #include "common.h"
-#include <ctype.h>
-#include <sys/stat.h>
-#include <dirent.h>
 #include <unistd.h>
-#include <libgen.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -17,12 +13,12 @@ void *safe_calloc(size_t size, size_t cnt)
 	return buf;
 }
 
-void *safe_malloc(size_t size)
+pid_t safe_fork(void)
 {
-	void *buf = malloc(size);
+	pid_t pid = fork();
 
-	assert(buf != NULL);
-	return buf;
+	assert(pid != -1);
+	return pid;
 }
 
 void safe_free(void *buf)
@@ -86,5 +82,5 @@ void safe_wait(void)
 	int status;
 
 	wait(&status);
-	assert(status == EXIT_SUCCESS);
+	//assert(status == EXIT_SUCCESS);
 }

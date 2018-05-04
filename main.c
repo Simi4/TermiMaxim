@@ -46,8 +46,7 @@ int main(int argc, char *argv[])
 
 		char **user_argv = split_string(buf);
 
-		current_pid = vfork();
-		assert(current_pid != -1);
+		current_pid = safe_fork();
 
 		if (current_pid == 0) {
 			if (execvp(user_argv[0], user_argv) == -1)

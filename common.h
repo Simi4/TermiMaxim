@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 
-void *safe_malloc(size_t size);
+pid_t safe_fork(void);
 
 void *safe_calloc(size_t size, size_t cnt);
 
