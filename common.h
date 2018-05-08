@@ -7,8 +7,6 @@
 
 pid_t safe_fork(void);
 
-void *safe_calloc(size_t size, size_t cnt);
-
 void safe_free(void *buf);
 
 ssize_t safe_getline(char **buf);
